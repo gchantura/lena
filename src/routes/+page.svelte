@@ -15,7 +15,7 @@
 				throw new Error('Failed to fetch comments.');
 			}
 			const data = await res.json();
-			comments.set(data);
+			comments.set(data.comments); // Set the comments array from the response
 		} catch (error) {
 			console.error('Fetch error:', error);
 			errorMessage = 'Failed to fetch comments.';
@@ -39,7 +39,7 @@
 			relationship = '';
 			full_name = '';
 			comment = '';
-			fetchComments();
+			fetchComments(); // Fetch comments after submitting a new comment
 		} catch (error) {
 			console.error('Submit error:', error);
 			errorMessage = 'Failed to submit comment.';
