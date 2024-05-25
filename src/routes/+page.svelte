@@ -14,7 +14,7 @@
 				throw new Error('Failed to fetch comments.');
 			}
 			const data = await res.json();
-			comments.set(data);
+			comments.set(data.rows); // Assuming `rows` contains the array of comment objects
 		} catch (error) {
 			console.error('Fetch error:', error);
 			errorMessage = 'Failed to fetch comments.';
