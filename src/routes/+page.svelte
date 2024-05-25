@@ -6,30 +6,43 @@
 	let full_name = '';
 	let comment = '';
 	let comments = writable([]);
+	let errorMessage = '';
 
 	async function fetchComments() {
-		const res = await fetch('/api/comment');
-		const data = await res.json();
-		comments.set(data);
+		try {
+			const res = await fetch('/api/comment');
+			if (!res.ok) {
+				throw new Error('Failed to fetch comments.');
+			}
+			const data = await res.json();
+			comments.set(data);
+		} catch (error) {
+			console.error('Fetch error:', error);
+			errorMessage = 'Failed to fetch comments.';
+		}
 	}
 
 	async function submitComment() {
-		const res = await fetch('/api/comment', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ relationship, full_name, comment })
-		});
+		try {
+			const res = await fetch('/api/comment', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ relationship, full_name, comment })
+			});
 
-		if (res.ok) {
+			if (!res.ok) {
+				throw new Error('Failed to submit comment.');
+			}
+
 			relationship = '';
 			full_name = '';
 			comment = '';
 			fetchComments();
-		} else {
-			const errorData = await res.json();
-			alert(errorData.error);
+		} catch (error) {
+			console.error('Submit error:', error);
+			errorMessage = 'Failed to submit comment.';
 		}
 	}
 
@@ -53,22 +66,19 @@
 </div>
 
 <div class="comments">
-	{#each $comments as comment}
-		<div class="comment">
-			<strong>{comment.full_name}</strong> ({comment.relationship})
-			<p>{comment.comment}</p>
-			<small>{new Date(comment.created_at).toLocaleString()}</small>
-		</div>
-	{/each}
+	{#if errorMessage}
+		<p>{errorMessage}</p>
+	{:else}
+		{#each $comments as comment}
+			<div class="comment">
+				<strong>{comment.full_name}</strong> ({comment.relationship})
+				<p>{comment.comment}</p>
+				<small>{new Date(comment.created_at).toLocaleString()}</small>
+			</div>
+		{/each}
+	{/if}
 </div>
 
 <style>
-	.comment-form {
-		margin-bottom: 1em;
-	}
-	.comment {
-		border: 1px solid #ddd;
-		padding: 1em;
-		margin-bottom: 1em;
-	}
+	/* Styles for comment form and comments */
 </style>
