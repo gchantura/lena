@@ -7,7 +7,6 @@
 	let comment = '';
 	let comments = writable([]);
 	let errorMessage = '';
-
 	async function fetchComments() {
 		try {
 			const res = await fetch('/api/comment');
@@ -15,7 +14,7 @@
 				throw new Error('Failed to fetch comments.');
 			}
 			const data = await res.json();
-			comments.set(data.comments); // Set the comments array from the response
+			comments.set(data);
 		} catch (error) {
 			console.error('Fetch error:', error);
 			errorMessage = 'Failed to fetch comments.';
@@ -39,7 +38,7 @@
 			relationship = '';
 			full_name = '';
 			comment = '';
-			fetchComments(); // Fetch comments after submitting a new comment
+			fetchComments();
 		} catch (error) {
 			console.error('Submit error:', error);
 			errorMessage = 'Failed to submit comment.';
