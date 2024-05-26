@@ -1,12 +1,12 @@
 <script>
-    import { DarkMode } from 'flowbite-svelte';
-    import Monogramm from '$lib/images/Monogramm.png';
+	import { DarkMode } from 'flowbite-svelte';
+	import Monogramm from '$lib/components/baseLayout/monogramm.png';
 </script>
 
 <header>
 	<div class="container-menu shadow-md">
 		<div class="container-menu-secondary shadow-md">
-			<div class="my-2 mx-8 left-12 w-10">
+			<div class="left-12 mx-8 my-2 w-10">
 				<a href="/"><img src={Monogramm} alt="Ciss Logo" /></a>
 			</div>
 			<div class="container-darkmode">
@@ -17,9 +17,9 @@
 </header>
 
 <style>
-    	.container-menu {
-    width: 100%;
-  }
+	.container-menu {
+		width: 100%;
+	}
 
 	.container-menu-secondary {
 		display: flex;

@@ -114,19 +114,19 @@
 		<p>{errorMessage}</p>
 	{:else}
 		{#each $comments as comment}
-			<blockquote class="comment mx-auto mb-4 max-w-2xl text-gray-500 lg:mb-8 dark:text-gray-400">
-<!-- 				<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{headline}</h3> -->
-				<p class="my-4">{comment.comment}</p>
-			</blockquote>
 			<figcaption class="flex items-center justify-center">
-<!-- 				<img class="h-9 w-9 rounded-full" src={imgSrc} alt={altText} /> -->
+				<!-- 				<img class="h-9 w-9 rounded-full" src={imgSrc} alt={altText} /> -->
 				<div class="ms-3 space-y-0.5 text-left font-medium rtl:text-right dark:text-white">
-					<div>{comment.full_name}</div>
-					<div class="text-sm text-gray-500 dark:text-gray-400">({comment.relationship})</div>
-					<div class="text-sm text-gray-500 dark:text-gray-400">{location}</div>
-					<small>{new Date(comment.created_at).toLocaleString()}</small>
+					<div>Fullname: {comment.full_name}</div>
+					<div class="text-sm text-gray-500 dark:text-gray-400">
+						I'm for Lena: ({comment.relationship})
+					</div>
 				</div>
 			</figcaption>
+			<blockquote class="comment mx-auto mb-4 max-w-2xl text-gray-500 lg:mb-8 dark:text-gray-400">
+				<!-- 				<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{headline}</h3> -->
+				<p class="my-4">{comment.comment}</p>
+			</blockquote>
 		{/each}
 	{/if}
 </figure>

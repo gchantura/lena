@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
- 	let relationship = '';
+	let relationship = '';
 	let full_name = '';
 	let comment = '';
 	let comments = writable([]);
@@ -50,14 +50,14 @@
 	}
 
 	onMount(fetchComments);
-	import { Alert, DarkMode } from 'flowbite-svelte'; 
+	import { Alert, DarkMode } from 'flowbite-svelte';
 </script>
 
 <Header />
 <MainTeaser />
 <SectionPrimary />
 
-<div class="comment-form">
+<!-- <div class="comment-form">
 	<label class="text">
 		Relationship:
 		<input bind:value={relationship} type="text" placeholder="e.g., Family" />
@@ -71,8 +71,8 @@
 		<textarea bind:value={comment} placeholder="Your comment here..."></textarea>
 	</label>
 	<button on:click={submitComment}>Post Comment</button>
-</div>
-
+</div> -->
+<!-- 
 <div class="comments">
 	{#if errorMessage}
 		<p>{errorMessage}</p>
@@ -85,7 +85,7 @@
 			</div>
 		{/each}
 	{/if}
-</div>
+</div> -->
 
 <style>
 	/* Styles for comment form and comments */
