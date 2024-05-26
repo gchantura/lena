@@ -1,8 +1,12 @@
 <script lang="ts">
+	import Header from '../lib/components/baseLayout/Header.svelte';
+	import MainTeaser from '../lib/components/index/MainTeaser.svelte';
+	import SectionPrimary from '../lib/components/index/SectionPrimary.svelte';
+
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
-	let relationship = '';
+ 	let relationship = '';
 	let full_name = '';
 	let comment = '';
 	let comments = writable([]);
@@ -46,17 +50,15 @@
 	}
 
 	onMount(fetchComments);
-	import { Alert, DarkMode } from 'flowbite-svelte';
+	import { Alert, DarkMode } from 'flowbite-svelte'; 
 </script>
 
-<div class="p-8">
-	<Alert>
-		<span class="font-medium">Info alert!</span>
-		Change a few things up and try submitting again.
-	</Alert>
-</div>
+<Header />
+<MainTeaser />
+<SectionPrimary />
+
 <div class="comment-form">
-	<label class="text-6xl font-bold underline text">
+	<label class="text">
 		Relationship:
 		<input bind:value={relationship} type="text" placeholder="e.g., Family" />
 	</label>
@@ -84,7 +86,6 @@
 		{/each}
 	{/if}
 </div>
-<DarkMode />
 
 <style>
 	/* Styles for comment form and comments */
