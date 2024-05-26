@@ -46,10 +46,17 @@
 	}
 
 	onMount(fetchComments);
+	import { Alert, DarkMode } from 'flowbite-svelte';
 </script>
 
+<div class="p-8">
+	<Alert>
+		<span class="font-medium">Info alert!</span>
+		Change a few things up and try submitting again.
+	</Alert>
+</div>
 <div class="comment-form">
-	<label>
+	<label class="text-6xl font-bold underline text">
 		Relationship:
 		<input bind:value={relationship} type="text" placeholder="e.g., Family" />
 	</label>
@@ -77,6 +84,7 @@
 		{/each}
 	{/if}
 </div>
+<DarkMode />
 
 <style>
 	/* Styles for comment form and comments */
