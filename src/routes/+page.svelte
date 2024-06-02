@@ -72,6 +72,7 @@
 	</label>
 	<button on:click={submitComment}>Post Comment</button>
 </div> -->
+
 <!-- 
 <div class="comments">
 	{#if errorMessage}

@@ -1,17 +1,16 @@
 <script lang="ts">
 	import { Input, Label } from 'flowbite-svelte';
-
-	let city = '',
-		title = '';
-
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	let relationship = '';
 	let full_name = '';
 	let comment = '';
+	let comment_from = '';
+	let comment_title = '';
 	let comments = writable([]);
 	let errorMessage = '';
+
 	async function fetchComments() {
 		try {
 			const res = await fetch('/api/comment');
@@ -33,7 +32,7 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ relationship, full_name, comment })
+				body: JSON.stringify({ relationship, full_name, comment, comment_from, comment_title })
 			});
 
 			if (!res.ok) {
@@ -43,6 +42,8 @@
 			relationship = '';
 			full_name = '';
 			comment = '';
+			comment_from = '';
+			comment_title = '';
 			fetchComments();
 		} catch (error) {
 			console.error('Submit error:', error);
@@ -54,7 +55,7 @@
 	import { Alert, DarkMode } from 'flowbite-svelte';
 </script>
 
-<form class="container-comment">
+<form class="container-comment" on:submit|preventDefault={submitComment}>
 	<div
 		class="mb-4 w-full rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700"
 	>
@@ -72,7 +73,7 @@
 				</div>
 				<div class="ml-4 w-64">
 					<Label for="city">Land oder Stadt</Label>
-					<Input type="text" id="city" bind:value={city} placeholder="..." required />
+					<Input type="text" id="city" bind:value={comment_from} placeholder="..." required />
 				</div>
 				<div class="ml-4 w-64">
 					<Label for="relation">Wer bist du für Alena?</Label>
@@ -86,7 +87,13 @@
 				</div>
 				<div class="ml-4 w-64">
 					<Label for="titel">Titel des Posts</Label>
-					<Input type="text" id="titel" bind:value={title} placeholder="Dear Alena..." required />
+					<Input
+						type="text"
+						id="titel"
+						bind:value={comment_title}
+						placeholder="Dear Alena..."
+						required
+					/>
 				</div>
 			</div>
 		</div>
@@ -103,7 +110,7 @@
 		</div>
 	</div>
 	<div class="container-button">
-		<button type="submit" on:click={submitComment}>Glückwunsch speichern</button>
+		<button type="submit">Glückwunsch speichern</button>
 	</div>
 </form>
 
@@ -114,19 +121,28 @@
 		<p>{errorMessage}</p>
 	{:else}
 		{#each $comments as comment}
-			<figcaption class="flex items-center justify-center">
-				<!-- 				<img class="h-9 w-9 rounded-full" src={imgSrc} alt={altText} /> -->
-				<div class="ms-3 space-y-0.5 text-left font-medium rtl:text-right dark:text-white">
-					<div>Fullname: {comment.full_name}</div>
-					<div class="text-sm text-gray-500 dark:text-gray-400">
-						I'm for Lena: ({comment.relationship})
-					</div>
-				</div>
-			</figcaption>
 			<blockquote class="comment mx-auto mb-4 max-w-2xl text-gray-500 lg:mb-8 dark:text-gray-400">
-				<!-- 				<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{headline}</h3> -->
 				<p class="my-4">{comment.comment}</p>
 			</blockquote>
+			<figcaption class="flex items-center justify-center">
+				<div class="ms-3 space-y-0.5 text-left font-medium rtl:text-right dark:text-white">
+					<div>From:{comment.full_name}</div>
+					<div class="text-sm text-gray-500 dark:text-gray-400">
+						Who I'm for Alena:({comment.relationship})
+					</div>
+					<div class="text-sm text-gray-500 dark:text-gray-400">
+						From Country:{comment.comment_from}
+					</div>
+					<div class="text-sm text-gray-500 dark:text-gray-400">Topic:{comment.comment_title}</div>
+					<small
+						>{new Date(comment.created_at).toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric'
+						})}</small
+					>
+				</div>
+			</figcaption>
 		{/each}
 	{/if}
 </figure>

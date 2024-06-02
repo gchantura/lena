@@ -1,11 +1,10 @@
 <script>
-import PostedCommentGroup from "../comments/PostedCommentGroup.svelte";
+	import PostedCommentGroup from '../comments/PostedCommentGroup.svelte';
 </script>
 
 <section class="sectionPrimary">
-<PostedCommentGroup />
+	<PostedCommentGroup />
 </section>
 
 <style>
-
 </style>
