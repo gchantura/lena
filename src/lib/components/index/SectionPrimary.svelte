@@ -4,7 +4,7 @@
 
 <section class="sectionPrimary pt-10 dark:bg-gray-800">
 	<p class="px-3 p-description text-left lg:text-center md:text-center text-3xl text-pink-600 dark:text-pink-400">
-		Ein besonderer Tag für eine besondere Person
+		Ein besonderer Tag für einen geliebten Menschen
 	</p>
 	<p class="px-3 p-description pt-4 text-left lg:text-center md:text-center text-lg font-light text-gray-700 dark:text-white">
 		Herzlich willkommen auf unserer Jubiläumsseite für Alena! Anlässlich ihres 60. Geburtstags haben

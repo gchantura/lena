@@ -4,7 +4,7 @@
 
 <section class="sectionPrimary pt-10 dark:bg-gray-800">
 	<p class="px-3 p-description text-left lg:text-center md:text-center text-3xl text-pink-600 dark:text-pink-400">
-		Особенный день для особенного человека
+		Особенный день для близкого человека
 	</p>
 	<p class="px-3 p-description pt-4 text-left lg:text-center md:text-center text-lg font-light text-gray-700 dark:text-white">
 		Добро пожаловать на нашу юбилейную страницу, посвященную Леночке! В честь её 60-летия мы создали
