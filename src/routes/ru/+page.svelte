@@ -1,6 +1,6 @@
 <script lang="ts">
-	import MainTeaser from '../lib/components/index/MainTeaser.svelte';
-	import SectionPrimary from '../lib/components/index/SectionPrimary.svelte';
+    import MainTeaserRu from '../../lib/components/index/MainTeaserRu.svelte';
+    import SectionPrimaryRu from '../../lib/components/index/SectionPrimaryRu.svelte';
 
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -50,10 +50,12 @@
 
 	onMount(fetchComments);
 	import { Alert, DarkMode } from 'flowbite-svelte';
+	import SectionPrimary from '../../lib/components/index/SectionPrimary.svelte';
 </script>
 
-<MainTeaser />
-<SectionPrimary />
+
+<MainTeaserRu />
+<SectionPrimaryRu />
 
 <style>
 

@@ -62,36 +62,36 @@
 		<div class="flex items-center justify-between border-b px-3 py-2 dark:border-gray-600">
 			<div class="mb-4 grid gap-6 md:grid-cols-2">
 				<div class="ml-4 w-64">
-					<Label for="name">Dein Name</Label>
+					<Label for="name">Твоё имя</Label>
 					<Input
 						type="text"
 						id="name"
 						bind:value={full_name}
-						placeholder="Erika Musterfrau..."
+						placeholder="Иван Иванов..."
 						required
 					/>
 				</div>
 				<div class="ml-4 w-64">
-					<Label for="city">Land oder Stadt</Label>
-					<Input type="text" id="city" bind:value={comment_from} placeholder="Berlin..." required />
+					<Label for="city">Город или страна</Label>
+					<Input type="text" id="city" bind:value={comment_from} placeholder="Львов..." required />
 				</div>
 				<div class="ml-4 w-64">
-					<Label for="relation">Wer bist du für Alena?</Label>
+					<Label for="relation">Кто ты для Лены?</Label>
 					<Input
 						type="text"
 						id="relation"
 						bind:value={relationship}
-						placeholder="Freund:in, Kollege:in, ..."
+						placeholder="Друг, подруга, однокланница ..."
 						required
 					/>
 				</div>
 				<div class="ml-4 w-64">
-					<Label for="titel">Titel des Posts</Label>
+					<Label for="titel">Заголовок поста</Label>
 					<Input
 						type="text"
 						id="titel"
 						bind:value={comment_title}
-						placeholder="Liebe Alena..."
+						placeholder="Дорогая Леночка..."
 						required
 					/>
 				</div>
@@ -104,7 +104,7 @@
 				rows="8"
 				bind:value={comment}
 				class="block w-full border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
-				placeholder="Hier kannst du deine Glückwünsche schreiben..."
+				placeholder="Здесь ты можешь написать свое поздравление..."
 				required
 			></textarea>
 		</div>
@@ -113,7 +113,7 @@
 		<button
 			type="submit"
 			class="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-slate-50 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600"
-			>Glückwunsch speichern</button
+			>Сохранить поздравление</button
 		>
 	</div>
 </form>
@@ -122,13 +122,13 @@
 	<p
 		class="p-description px-3 text-left text-3xl text-pink-600 md:text-center lg:text-center dark:text-pink-400"
 	>
-		Ein Blick auf gemiensame Beiträge
+		Обзор наших общих поздравлений
 	</p>
 	<p
 		class="p-description px-3 pt-4 text-left text-lg font-light text-gray-700 md:text-center lg:text-center dark:text-white"
 	>
-		Willkommen im Bereich der Nachrichten und Glückwünsche für Alena! Hier kann man alle bisher
-		geteilten Beiträge durchstöbern.
+		Добро пожаловать в раздел сообщений и поздравлений для Алёны! Здесь вы можете просмотреть все
+		опубликованные сообщения.
 	</p>
 </section>
 
@@ -147,7 +147,7 @@
 						class="gap-2 box-comment-description space-y-0.5 text-left font-medium rtl:text-right dark:text-white"
 					>
 						<div
-							class="box-name w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-left sm:px-8 dark:border-gray-700 dark:bg-gray-800"
+							class="w-full box-name rounded-lg border border-gray-200 bg-white px-4 py-2 text-left sm:px-8 dark:border-gray-700 dark:bg-gray-800"
 						>
 							<div>{comment.full_name}</div>
 							<div class="text-sm text-gray-500 dark:text-gray-400">
@@ -164,7 +164,7 @@
 								})}</small
 							>
 							<div class="text-sm text-gray-500 dark:text-gray-400">
-								Aus {comment.comment_from}
+								Из: {comment.comment_from}
 							</div>
 						</div>
 					</div>
